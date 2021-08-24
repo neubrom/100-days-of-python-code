@@ -11,14 +11,14 @@ if size == "S":
     bill = 15
     if add_pepperoni == "Y":
         bill +=2
-if size == "M":
+elif size == "M":
     bill = 20
     if add_pepperoni == "Y":
         bill +=3
-if size == "L":
+elif size == "L":
     bill = 25
     if add_pepperoni == "Y":
         bill +=3
-if extra_cheese == "Y":
+elif extra_cheese == "Y":
     bill+=1
 print(f"Your finall bill is: ${bill}")
