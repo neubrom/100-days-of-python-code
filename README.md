@@ -2,6 +2,6 @@
 100 Days of Python
 </h1>
 <h5 align="center">
-Starting from : August 20, 2021
+Starting from : August 22, 2021
 </h5>
 
