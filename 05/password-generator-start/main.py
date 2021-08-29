@@ -21,7 +21,6 @@ total_charakters = nr_numbers+nr_letters+nr_symbols
 choise_typ = {0:letters, 1:symbols, 2:numbers}
 choise_count = {0:nr_letters, 1:nr_symbols, 2:nr_numbers}
 random_1_3 =0
-random_range = 0
 
 for n in range(0, total_charakters):
     #choise switch random numb/char/sumb

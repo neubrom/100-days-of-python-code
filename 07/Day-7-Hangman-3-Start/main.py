@@ -34,10 +34,6 @@ while lengh2 != 0:
     if lengh2 == 0:
         print("you win!")
 
-
-
-
-
 #Check guessed letter
 """for position in range(word_length):
     letter = chosen_word[position]
