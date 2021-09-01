@@ -36,33 +36,9 @@ cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10]
 rest_cards =[]
 
 
-def start_game():
-    your_score = 0
-    rest_cards = cards
-    begin = str(input("Start new game y/n?"))
-    if begin == "y":
-        print(logo)
-        get_cards(player=you, amount_card=2, rest=rest_cards)
-        get_cards(player=computer, amount_card=1, rest=rest_cards)
-        print(f"Your cards: {you}, current score: {sum_total(player=you)}")
-        print(f"Computer's first card: {computer}")
-        get_another_card(player_an=you, amount_card_an=1, rest_an=rest_cards)
-        while sum_total(computer)<=21:
-            get_cards(player=computer, amount_card=1, rest=rest_cards)
-        print(f"Computer's cards: {computer}, score: {sum_total(player=computer)}")
-        if sum_total(you) > sum_total(computer) and sum_total(you) <= 21:
-            print(f"You won!")
-        elif sum_total(you) < sum_total(computer) and sum_total(computer) <= 21:
-            print(f"You lose!")
-        elif sum_total(you) == sum_total(computer)  and sum_total(compile) <= 21:
-            print(f"Draw!")
-        else:
-            print(f"You won!")
-
+#def start_game():
 
         
-
-
 
 def get_cards(player, amount_card, rest):
     """Get(pop) random card from rest and retourn new rest and player card"""
@@ -92,4 +68,28 @@ def get_total(player):
         print(f"{sum}! {player} lose")  
     return sum
 
-start_game()
+#start_game()
+rest_cards = cards
+begin = str(input("Start new game y/n?"))
+if begin == "y":
+    print(logo)
+get_cards(player=you, amount_card=2, rest=rest_cards)
+get_cards(player=computer, amount_card=1, rest=rest_cards)
+print(f"Your cards: {you}, current score: {sum_total(player=you)}")
+print(f"Computer's first card: {computer}")
+get_another_card(player_an=you, amount_card_an=1, rest_an=rest_cards)
+while sum_total(computer)<=21:
+    get_cards(player=computer, amount_card=1, rest=rest_cards)
+print(f"Computer's cards: {computer}, score: {sum_total(player=computer)}")
+if sum_total(you) > sum_total(computer) and sum_total(you) <= 21:
+    print(f"You win!")
+elif sum_total(you) > sum_total(computer) and sum_total(computer) > 21:
+    print(f"You win!")
+elif sum_total(you) < sum_total(computer) and sum_total(computer) <= 21:
+    print(f"You lose!")
+elif sum_total(you) < sum_total(computer) and sum_total(you) > 21:
+    print(f"You lose!")   
+elif sum_total(you) == sum_total(computer)  and sum_total(compile) <= 21:
+    print(f"Draw!")
+else:
+    print(f"You win!")
