@@ -24,79 +24,45 @@
 #Then try out the completed Blackjack project here: 
 #   http://blackjack-final.appbrewery.repl.run
 
-#Hint 2: Read this breakdown of program requirements: 
-#   http://listmoz.com/view/6h34DJpvJBFVRlZfJvxF
-#Then try to create your own flowchart for the program.
-
-#Hint 3: Download and read this flow chart I've created: 
-#   https://drive.google.com/uc?export=download&id=1rDkiHCrhaf9eX7u7yjM1qwSuyEk-rPnt
-
-#Hint 4: Create a deal_card() function that uses the List below to *return* a random card.
-#11 is the Ace.
-#cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-
-#Hint 5: Deal the user and computer 2 cards each using deal_card() and append().
-#user_cards = []
-#computer_cards = []
-
-#Hint 6: Create a function called calculate_score() that takes a List of cards as input 
-#and returns the score. 
-#Look up the sum() function to help you do this.
-
-#Hint 7: Inside calculate_score() check for a blackjack (a hand with 
-# only 2 cards: ace + 10) and return 0 instead of the actual score. 0 will 
-# represent a blackjack in our game.
-
-#Hint 8: Inside calculate_score() check for an 11 (ace). 
-# If the score is already over 21, remove the 11 and replace 
-# it with a 1. You might need to look up append() and remove().
-
-#Hint 9: Call calculate_score(). If the computer or the user has a 
-# blackjack (0) or if the user's score is over 21, then the game ends.
-
-#Hint 10: If the game has not ended, ask the user if they want to draw 
-# another card. If yes, then use the deal_card() function to add 
-# another card to the user_cards List. If no, then the game has ended.
-
-#Hint 11: The score will need to be rechecked with every new card 
-# drawn and the checks in Hint 9 need to be repeated until the game ends.
-
-#Hint 12: Once the user is done, it's time to let the computer play. 
-# The computer should keep drawing cards as long as it has a score 
-# less than 17.
-
-#Hint 13: Create a function called compare() and pass in the user_score 
-# and computer_score. If the computer and user both have the same score, 
-# then it's a draw. If the computer has a blackjack (0), then the user loses. 
-# If the user has a blackjack (0), then the user wins. 
-# If the user_score is over 21, then the user loses. 
-# If the computer_score is over 21, then the computer loses. 
-# If none of the above, then the player with the highest score wins.
-
-#Hint 14: Ask the user if they want to restart the game. 
-# If they answer yes, clear the console and start a new game 
-# of blackjack and show the logo from art.py.
-
 import random
 import os
-import art
+from art import logo
+from sum import sum_total
+
 new_game = True
-computer_choise = {}
-your_choise = {}
-#cards = { "A": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "Q": 10, "K": 10, "J": 10, }
-cards = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
+computer = []
+you = []
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10]
+rest_cards =[]
+
 
 def start_game():
+    your_score = 0
+    rest_cards = cards
     begin = str(input("Start new game y/n?"))
     if begin == "y":
-        print(art.logo)
-        rest = cards
-        you = your_choise
-        computer = computer_choise
-        get_cards(player=computer, amount_card=1, rest=rest)
+        print(logo)
+        get_cards(player=you, amount_card=2, rest=rest_cards)
+        get_cards(player=computer, amount_card=1, rest=rest_cards)
+        print(f"Your cards: {you}, current score: {sum_total(player=you)}")
+        print(f"Computer's first card: {computer}")
+        get_another_card(player_an=you, amount_card_an=1, rest_an=rest_cards)
+        while sum_total(computer)<=21:
+            get_cards(player=computer, amount_card=1, rest=rest_cards)
+        print(f"Computer's cards: {computer}, score: {sum_total(player=computer)}")
+        if sum_total(you) > sum_total(computer) and sum_total(you) <= 21:
+            print(f"You won!")
+        elif sum_total(you) < sum_total(computer) and sum_total(computer) <= 21:
+            print(f"You lose!")
+        elif sum_total(you) == sum_total(computer)  and sum_total(compile) <= 21:
+            print(f"Draw!")
+        else:
+            print(f"You won!")
 
-    else:
-        new_game = False
+
+        
+
+
 
 def get_cards(player, amount_card, rest):
     """Get(pop) random card from rest and retourn new rest and player card"""
@@ -107,26 +73,23 @@ def get_cards(player, amount_card, rest):
         amount_card -= 1
     return player, rest
 
+def get_another_card(player_an, amount_card_an, rest_an):
+        another_card = input("Type 'y' to get another card, type 'n' to pass: y: ")
+        if another_card == "y":
+            get_cards(player=player_an, amount_card=amount_card_an, rest=rest_an)
+            print(f"Your cards: {you}, current score: {sum_total(you)}")
+            if sum_total(you) > 21:
+                print("You went over. You lose")
+                return
+            get_another_card(player_an, amount_card_an, rest_an)
+        return player_an, rest_an
+
+
 def get_total(player):
-    """calculate total score for player"""
-    sum = 0
-    if 1 not in player:
-        for i in player:
-            sum += i
-    else:
-       for i in player:
-            if i != 1:
-                total = 0
-                total += i
-            sum_temp = total
-            if sum_temp + 11 > 21:
-                sum = sum_temp + 1
-            else:
-                sum = sum_temp + 1
-    print(f"current score: {sum}")
+    """calculate total score for player and test if > 21"""
+    sum = sum_total(player)
     if sum > 21:
-        print(f"{sum}! {player} lose")
-  
+        print(f"{sum}! {player} lose")  
     return sum
 
 start_game()
