@@ -35,11 +35,6 @@ you = []
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10]
 rest_cards =[]
 
-
-#def start_game():
-
-        
-
 def get_cards(player, amount_card, rest):
     """Get(pop) random card from rest and retourn new rest and player card"""
     while amount_card != 0:
@@ -68,7 +63,7 @@ def get_total(player):
         print(f"{sum}! {player} lose")  
     return sum
 
-#start_game()
+#start_game
 rest_cards = cards
 begin = str(input("Start new game y/n?"))
 if begin == "y":
@@ -88,8 +83,12 @@ elif sum_total(you) > sum_total(computer) and sum_total(computer) > 21:
 elif sum_total(you) < sum_total(computer) and sum_total(computer) <= 21:
     print(f"You lose!")
 elif sum_total(you) < sum_total(computer) and sum_total(you) > 21:
+    print(f"You lose!")
+elif sum_total(you) < sum_total(computer) and sum_total(computer) > 21:
+    print(f"You win!")
+elif sum_total(you) < sum_total(computer) and sum_total(you) > 21:
     print(f"You lose!")   
 elif sum_total(you) == sum_total(computer)  and sum_total(compile) <= 21:
     print(f"Draw!")
-else:
-    print(f"You win!")
+#else:
+ #   print(f"You win!")
