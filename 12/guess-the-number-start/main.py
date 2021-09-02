@@ -48,7 +48,7 @@ def game():
             elif answer == guess_c:
                 print(f"You got it! The answer was {answer}.")
         else:
-            return print("You've run out of guesses, you lose.")
+            return
 
 
 
