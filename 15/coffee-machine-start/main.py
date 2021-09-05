@@ -50,17 +50,17 @@ def order():
     return drink_order
 
 
-# TODO Turn off the Machine
+# Turn off the Machine
 """Turn off the Coffee Machine by entering “​ off​” to the prompt.
 a. For maintainers of the coffee machine, they can use “off” as the secret word to turn off
 the machine. Your code should end execution when this happens."""
 
 
-def machine_on_off(machine_off):
+def machine_on_off(drink_order):
     """check if order is OFF, input - drink order """
-    if machine_off in ("espresso", "latte", "cappuccino", "report"):
+    if drink_order in ("espresso", "latte", "cappuccino", "report"):
         return True
-    elif machine_off == "off":
+    elif drink_order == "off":
         return False
 
 
@@ -79,7 +79,7 @@ def report(drink_order, resources_c):
             print(key, ':', value, end=" ")
             if key in ("water", "milk"):
                 print("ml")
-            elif key is "money":
+            elif key in ("coffee"):
                 print("g")
             else:
                 print("$")
@@ -95,12 +95,13 @@ c. The same should happen if another resource is depleted, e.g. milk or coffee."
 
 def check_resources(drink_order, resources_check, menu_check):
     """compare needed resources for drink order according to MENU"""
-    for keys_l in list(MENU[drink_order]['ingredients'].keys()):
-        if resources.get(keys_l) - MENU[drink]['ingredients'].get(keys_l) >= 0:
-            return True
-        else:
-            print(f"Sorry there is not enough {keys_l}.")
-            return False
+    if drink_order != "report":
+        for keys_l in list(menu_check[drink_order]['ingredients'].keys()):
+            if resources_check.get(keys_l) - MENU[drink]['ingredients'].get(keys_l) >= 0:
+                return True
+            else:
+                print(f"Sorry there is not enough {keys_l}.")
+                return False
 
 # Process coins.
 """ a. If there are sufficient resources to make the drink selected, then the program should
@@ -136,11 +137,13 @@ def process_coins(drink_order, menu_check, resources_new):
         change = round((inserted - price), 2)
         print(f"Here is {change} dollars in change.")
         resources_new["money"] += price
+        for keys_l in list(menu_check[drink_order]['ingredients'].keys()):
+            resources_new[keys_l] -= menu_check[drink_order]['ingredients'][keys_l]
         return True, resources_new
 
 
 
-# TODO Make Coffee.
+# Make Coffee.
 """a. If the transaction is successful and there are enough resources to make the drink the
 user selected, then the ingredients to make the drink should be deducted from the
 coffee machine resources.
@@ -157,16 +160,20 @@ Money: $2.5
 b. Once all resources have been deducted, tell the user “Here is your latte. Enjoy!”. If
 latte was their choice of drink."""
 
-def make_kofee(drink_order, menu_check, resources_new):
-    #for XXX in resources - YYY from menu
-    #print(f"“Here is your {drink_order}. Enjoy!”")
-        ## return resources
 
-
-def Kaffe_automat():
-    global drink, machine_state
+def automat():
+    global machine_state, drink
+    machine_state = True
     drink = order()
-    machine_state = machine_on_off(machine_off=drink)
-    report(drink_order=drink, resources_c=resources)
+    if drink == "report":
+        report(drink_order=drink, resources_c=resources)
+        automat()
+    elif machine_state == machine_on_off(drink_order=drink):
+       if check_resources(drink_order=drink, resources_check=resources, menu_check=MENU):
+           process_coins(drink_order=drink, menu_check=MENU, resources_new=resources)
+           automat()
+    else:
+        return
 
 
+automat()
