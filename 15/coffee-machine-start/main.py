@@ -33,7 +33,7 @@ resources = {
 drink = ""
 mashine_state = True
 resources_now = resources
-
+# print(resources_now)
 # TODO Ask wat would the customer like 
 """Prompt user by asking “​ What would you like? (espresso/latte/cappuccino):​”
 a. Check the user’s input to decide what to do next.
@@ -49,30 +49,37 @@ def order():
     return drink_order
 
 
-# TODO Turn off the Maschine
+# TODO Turn off the Machine
 """Turn off the Coffee Machine by entering “​ off​” to the prompt.
 a. For maintainers of the coffee machine, they can use “off” as the secret word to turn off
 the machine. Your code should end execution when this happens."""
 
 
-def mashine_on_off():
-    if drink in ("espresso", "latte", "cappuccino"):
+def machine_on_off(machine_off):
+    """check if order is OFF, input - drink order """
+    if machine_off in ("espresso", "latte", "cappuccino"):
         return True
-    elif drink == "off":
+    elif machine_off == "off":
         return False
 
+
 # TODO Print report.
-"""When the user enters “report” to the prompt, a report should be generated that shows
-the current resource values. e.g.
+"""When the user enters “report” to the prompt,
+a report should be generated that shows the current resource values. e.g.
 Water: 100ml
 Milk: 50ml
 Coffee: 76g
 Money: $2.5"""
 
 
-def report(drink_order):
+def report(drink_order, resources_c):
     if drink_order == "report":
-        print(resources_now)
+        for key, value in resources_c.items():
+            print(key, ':', value, end = " ")
+            if key in ("water", "milk"):
+                print("ml")
+            else:
+                print("$")
 
 
 # TODO Check resources sufficient?
@@ -83,11 +90,11 @@ not continue to make the drink but print: “​ Sorry there is not enough water
 ”
 c. The same should happen if another resource is depleted, e.g. milk or coffee."""
 
-def chesk_resources(drink_order, resources_now_check):
-    # compare MENU vs resources
+# def chesk_resources(drink_order, resources_now_check):
+# compare MENU vs resources
 
 # TODO Process coins.
-"""a. If there are sufficient resources to make the drink selected, then the program should
+""" a. If there are sufficient resources to make the drink selected, then the program should
 prompt the user to insert coins.
 b. Remember that quarters = $0.25, dimes = $0.10, nickles = $0.05, pennies = $0.01
 c. Calculate the monetary value of the coins inserted. E.g. 1 quarter, 2 dimes, 1 nickel, 2
@@ -125,7 +132,9 @@ Money: $2.5
 b. Once all resources have been deducted, tell the user “Here is your latte. Enjoy!”. If
 latte was their choice of drink."""
 
-
-order()
-mashine_on_off()
-report()
+print(order())
+print(mashine_state)
+print(resources_now)
+machine_on_off(machine_off=drink)
+print(mashine_state)
+#report(drink_order=order, resources_c=resources_now)
