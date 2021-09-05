@@ -28,11 +28,12 @@ resources = {
     "water": 300,
     "milk": 200,
     "coffee": 100,
+    "money": 0,
 }
 
 drink = ""
-mashine_state = True
-resources_now = resources
+machine_state = True
+
 # print(resources_now)
 # TODO Ask wat would the customer like 
 """Prompt user by asking “​ What would you like? (espresso/latte/cappuccino):​”
@@ -57,13 +58,13 @@ the machine. Your code should end execution when this happens."""
 
 def machine_on_off(machine_off):
     """check if order is OFF, input - drink order """
-    if machine_off in ("espresso", "latte", "cappuccino"):
+    if machine_off in ("espresso", "latte", "cappuccino", "report"):
         return True
     elif machine_off == "off":
         return False
 
 
-# TODO Print report.
+# Print report.
 """When the user enters “report” to the prompt,
 a report should be generated that shows the current resource values. e.g.
 Water: 100ml
@@ -75,14 +76,16 @@ Money: $2.5"""
 def report(drink_order, resources_c):
     if drink_order == "report":
         for key, value in resources_c.items():
-            print(key, ':', value, end = " ")
+            print(key, ':', value, end=" ")
             if key in ("water", "milk"):
                 print("ml")
+            elif key is "money":
+                print("g")
             else:
                 print("$")
 
 
-# TODO Check resources sufficient?
+# Check resources sufficient?
 """a. When the user chooses a drink, the program should check if there are enough
 resources to make that drink.
 b. E.g. if Latte requires 200ml water but there is only 100ml left in the machine. It should
@@ -90,17 +93,23 @@ not continue to make the drink but print: “​ Sorry there is not enough water
 ”
 c. The same should happen if another resource is depleted, e.g. milk or coffee."""
 
-# def chesk_resources(drink_order, resources_now_check):
-# compare MENU vs resources
+def check_resources(drink_order, resources_check, menu_check):
+    """compare needed resources for drink order according to MENU"""
+    for keys_l in list(MENU[drink_order]['ingredients'].keys()):
+        if resources.get(keys_l) - MENU[drink]['ingredients'].get(keys_l) >= 0:
+            return True
+        else:
+            print(f"Sorry there is not enough {keys_l}.")
+            return False
 
-# TODO Process coins.
+# Process coins.
 """ a. If there are sufficient resources to make the drink selected, then the program should
 prompt the user to insert coins.
 b. Remember that quarters = $0.25, dimes = $0.10, nickles = $0.05, pennies = $0.01
 c. Calculate the monetary value of the coins inserted. E.g. 1 quarter, 2 dimes, 1 nickel, 2
 pennies = 0.25 + 0.1 x 2 + 0.05 + 0.01 x 2 = $0.52"""
 
-# TODO Check transaction successful?
+#  Check transaction successful?
 """a. Check that the user has inserted enough money to purchase the drink they selected.
 E.g Latte cost $2.50, but they only inserted $0.52 then after counting the coins the
 program should say “​ Sorry that's not enough money. Money refunded.​
@@ -109,11 +118,27 @@ b. But if the user has inserted enough money, then the cost of the drink gets ad
 machine as the profit and this will be reflected the next time “report” is triggered. E.g.
 Water: 100ml
 Milk: 50ml
+
 Coffee: 76g
 Money: $2.5
 c. If the user has inserted too much money, the machine should offer change.E.g. “Here is $2.45 dollars in change.” 
 The change should be rounded to 2 decimal
 places."""
+
+def process_coins(drink_order, menu_check, resources_new):
+    price = float(MENU[drink]['cost'])
+    print(f"Price: ${price}")
+    inserted = float(input("please insert coins: "))
+    if inserted < price:
+        print("Sorry that's not enough money. Money refunded.")
+        process_coins(drink_order, menu_check, resources_new)
+    else:
+        change = round((inserted - price), 2)
+        print(f"Here is {change} dollars in change.")
+        resources_new["money"] += price
+        return True, resources_new
+
+
 
 # TODO Make Coffee.
 """a. If the transaction is successful and there are enough resources to make the drink the
@@ -132,9 +157,16 @@ Money: $2.5
 b. Once all resources have been deducted, tell the user “Here is your latte. Enjoy!”. If
 latte was their choice of drink."""
 
-print(order())
-print(mashine_state)
-print(resources_now)
-machine_on_off(machine_off=drink)
-print(mashine_state)
-#report(drink_order=order, resources_c=resources_now)
+def make_kofee(drink_order, menu_check, resources_new):
+    #for XXX in resources - YYY from menu
+    #print(f"“Here is your {drink_order}. Enjoy!”")
+        ## return resources
+
+
+def Kaffe_automat():
+    global drink, machine_state
+    drink = order()
+    machine_state = machine_on_off(machine_off=drink)
+    report(drink_order=drink, resources_c=resources)
+
+
