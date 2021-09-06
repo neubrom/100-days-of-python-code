@@ -35,7 +35,7 @@ drink = ""
 machine_state = True
 
 # print(resources_now)
-# TODO Ask wat would the customer like 
+# Ask wat would the customer like
 """Prompt user by asking “​ What would you like? (espresso/latte/cappuccino):​”
 a. Check the user’s input to decide what to do next.
 b. The prompt should show every time action has completed, e.g. once the drink is
@@ -93,6 +93,7 @@ not continue to make the drink but print: “​ Sorry there is not enough water
 ”
 c. The same should happen if another resource is depleted, e.g. milk or coffee."""
 
+
 def check_resources(drink_order, resources_check, menu_check):
     """compare needed resources for drink order according to MENU"""
     if drink_order != "report":
@@ -102,6 +103,7 @@ def check_resources(drink_order, resources_check, menu_check):
             else:
                 print(f"Sorry there is not enough {keys_l}.")
                 return False
+
 
 # Process coins.
 """ a. If there are sufficient resources to make the drink selected, then the program should
@@ -126,6 +128,7 @@ c. If the user has inserted too much money, the machine should offer change.E.g.
 The change should be rounded to 2 decimal
 places."""
 
+
 def process_coins(drink_order, menu_check, resources_new):
     price = float(MENU[drink]['cost'])
     print(f"Price: ${price}")
@@ -140,7 +143,6 @@ def process_coins(drink_order, menu_check, resources_new):
         for keys_l in list(menu_check[drink_order]['ingredients'].keys()):
             resources_new[keys_l] -= menu_check[drink_order]['ingredients'][keys_l]
         return True, resources_new
-
 
 
 # Make Coffee.
