@@ -73,17 +73,33 @@ Money: $2.5
 b. Once all resources have been deducted, tell the user “Here is your latte. Enjoy!”. If
 latte was their choice of drink."""
 
+def order():
+    drink_order = input("​ What would you like? (espresso/latte/cappuccino):​")
+    if drink_order not in ("espresso", "latte", "cappuccino", "off", "report"):
+        print("Wrong input, order again!")
+        order()
+    return drink_order
 
-automat():
-global machine_state, drink
-machine_state = True
-drink = order()
-if drink == "report":
-    report(drink_order=drink, resources_c=resources)
-    automat()
-elif machine_state == machine_on_off(drink_order=drink):
-   if check_resources(drink_order=drink, resources_check=resources, menu_check=MENU):
-       process_coins(drink_order=drink, menu_check=MENU, resources_new=resources)
-       automat()
-else:
-    return
+#automat():
+global machine_state, choise
+
+machine_state_on = True
+
+money_machine = MoneyMachine()
+coffee_maker = CoffeeMaker()
+menu = Menu()
+
+
+while machine_state_on:
+    options = menu.get_items()
+    choise = input(f"What would you like? {options}: ")
+    if choise == "report":
+        coffee_maker.report()
+        money_machine.report()
+    elif choise == "off":
+        machine_state = False
+        break
+    else:
+        drink = menu.find_drink(choise)
+        if coffee_maker.is_resource_sufficient(drink) and money_machine.make_payment(drink.cost):
+            coffee_maker.make_coffee(drink)

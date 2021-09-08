@@ -31,7 +31,7 @@ resources = {
     "money": 0,
 }
 
-drink = ""
+choise = ""
 machine_state = True
 
 # print(resources_now)
@@ -98,7 +98,7 @@ def check_resources(drink_order, resources_check, menu_check):
     """compare needed resources for drink order according to MENU"""
     if drink_order != "report":
         for keys_l in list(menu_check[drink_order]['ingredients'].keys()):
-            if resources_check.get(keys_l) - MENU[drink]['ingredients'].get(keys_l) >= 0:
+            if resources_check.get(keys_l) - MENU[choise]['ingredients'].get(keys_l) >= 0:
                 return True
             else:
                 print(f"Sorry there is not enough {keys_l}.")
@@ -130,7 +130,7 @@ places."""
 
 
 def process_coins(drink_order, menu_check, resources_new):
-    price = float(MENU[drink]['cost'])
+    price = float(MENU[choise]['cost'])
     print(f"Price: ${price}")
     inserted = float(input("please insert coins: "))
     if inserted < price:
@@ -164,7 +164,7 @@ latte was their choice of drink."""
 
 
 def automat():
-    global machine_state, drink
+    global machine_state, choise
     machine_state = True
     drink = order()
     if drink == "report":
