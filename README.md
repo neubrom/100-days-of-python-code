@@ -32,3 +32,13 @@ Day 12 - Beginner - Scope & Number Guessing Game
 Day 13 - Beginner - Debugging: How to Find and Fix Errors in your Code
 
 Day 14 - Beginner - Higher Lower Game Project
+
+Abschnitt 15: Day 15 - Intermediate - Local Development Environment Setup & the Coffee Machine
+
+Abschnitt 16: Day 16 - Intermediate - Object Oriented Programming (OOP)
+
+Abschnitt 17: Day 17 - Intermediate - The Quiz Project & the Benefits of OOP
+
+Abschnitt 18: Day 18 - Intermediate - Turtle & the Graphical User Interface (GUI)
+
+Abschnitt 19: Day 19 - Intermediate - Instances, State and Higher Order Functions
