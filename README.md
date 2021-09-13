@@ -44,3 +44,6 @@ Starting from : August 22, 2021
 [Abschnitt 19: Day 19 - Intermediate - Instances, State and Higher Order Functions](https://github.com/neubrom/100day/tree/master/19)
 
 [Abschnitt 20: Day 20 - Intermediate - Build the Snake Game Part 1: Animation & Coordinates](https://github.com/neubrom/100day/tree/master/20)
+
+[Abschnitt [21: Day 21 - Intermediate - Build the Snake Game Part 2: Inheritance & List Slicing](https://github.com/neubrom/100day/tree/master/21))
+
