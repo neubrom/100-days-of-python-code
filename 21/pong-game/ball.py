@@ -1,4 +1,5 @@
 from turtle import Turtle
+BALL_SPEED = 0.1
 
 
 class Ball(Turtle):
@@ -12,6 +13,11 @@ class Ball(Turtle):
         self.goto(0, 0)
 
     def move(self):
-        new_x = self.xcor() + 0.2
-        new_y = self.ycor() + 0.2
-        self.goto(new_x, new_y)
+        if self.xcor() < 280 or self.xcor() < -280:
+            new_x = self.xcor() + BALL_SPEED
+            new_y = self.ycor() + BALL_SPEED
+            self.goto(new_x, new_y)
+        else:
+            new_x = self.xcor() + BALL_SPEED
+            new_y = self.ycor() - BALL_SPEED
+            self.goto(new_x, new_y)
