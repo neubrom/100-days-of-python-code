@@ -1,5 +1,4 @@
 from turtle import Turtle
-BALL_SPEED = 0.1
 
 
 class Ball(Turtle):
@@ -11,13 +10,13 @@ class Ball(Turtle):
         self.shapesize(stretch_wid=1, stretch_len=1)
         self.penup()
         self.goto(0, 0)
+        self.y_move = 10
+        self.x_move = 10
 
     def move(self):
-        if self.xcor() < 280 or self.xcor() < -280:
-            new_x = self.xcor() + BALL_SPEED
-            new_y = self.ycor() + BALL_SPEED
-            self.goto(new_x, new_y)
-        else:
-            new_x = self.xcor() + BALL_SPEED
-            new_y = self.ycor() - BALL_SPEED
-            self.goto(new_x, new_y)
+        new_x = self.xcor() + self.x_move
+        new_y = self.ycor() + self.y_move
+        self.goto(new_x, new_y)
+
+    def bounce(self):
+        self.y_move *= -1
