@@ -5,7 +5,7 @@ from ball import Ball
 
 
 screen = Screen()
-screen.setup(height=600, width=800)
+screen.setup(width=800, height=600)
 screen.bgcolor("black")
 screen.title("Pong game")
 screen.tracer(0)
@@ -27,10 +27,11 @@ while game_is_on:
     screen.update()
     ball.move()
 
-    if ball.ycor() > 300 or ball.ycor() > -300:
-        ball.bounce()
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.y_bounce()
 
 
-
+if ball.distance(r_paddle) < 50 and ball.xcor() > 340:
+    ball.y_bounce()
 
 screen.exitonclick()
