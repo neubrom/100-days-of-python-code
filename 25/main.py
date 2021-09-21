@@ -21,7 +21,7 @@ import pandas as pd
 # print("Max temp:" + f"{mean_df_max}")
 
 data = pd.read_csv("2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
-#print(data)
+print(data)
 df = pd.DataFrame(data, columns=['grey', 'red', 'black'])
 df_color = df["Primary Fur Color"].count()
 print(df_color)
