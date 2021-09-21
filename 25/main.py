@@ -21,7 +21,15 @@ import pandas as pd
 # print("Max temp:" + f"{mean_df_max}")
 
 data = pd.read_csv("2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
-print(data)
-df = pd.DataFrame(data, columns=['grey', 'red', 'black'])
-df_color = df["Primary Fur Color"].count()
-print(df_color)
+#print(data)
+grey_count = len(data[data["Primary Fur Color"] == "Gray"])
+red_count = len(data[data["Primary Fur Color"] == "Black"])
+black_count = len(data[data["Primary Fur Color"] == "Cinnamon"])
+
+data_dict = {
+    "Fur Color": ["Gray", "Cinnamon", "Black"],
+    "Count": [grey_count, red_count, black_count]
+}
+
+df = pd.DataFrame(data_dict)
+df.to_csv("squirrel_count.csv")
