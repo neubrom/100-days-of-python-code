@@ -59,7 +59,7 @@ Starting from : August 22, 2021
 [Day 26 - Intermediate - List Comprehension and the NATO Alphabet](https://github.com/neubrom/100day/tree/master/26)
 
 [Day 27 - Intermediate - Tkinter, *args, **kwargs and Creating GUI Programs](https://github.com/neubrom/100day/tree/master/27)
-
+file:///home/brom/PycharmProjects/100day/28/Screenshot%20from%202021-09-28%2023-29-24.png
 [Day 28 - Intermediate - Tkinter, Dynamic Typing and the Pomodoro GUI Application](https://github.com/neubrom/100day/tree/master/28)
 
 [Day 29 - Intermediate - Building a Password Manager GUI App with Tkinter](https://github.com/neubrom/100day/tree/master/29)
