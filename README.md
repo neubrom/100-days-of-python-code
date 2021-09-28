@@ -47,3 +47,21 @@ Starting from : August 22, 2021
 
 [Day 21 - Intermediate - Build the Snake Game Part 2: Inheritance & List Slicing](https://github.com/neubrom/100day/tree/master/21))
 
+[Day 22 - Intermediate - Build Pong: The Famous Arcade Game](https://github.com/neubrom/100day/tree/master/22)
+
+[Day 23 - Intermediate - The Turtle Crossing Capstone Project](https://github.com/neubrom/100day/tree/master/23)
+
+[Day 24 - Intermediate - Files, Directories and Paths](https://github.com/neubrom/100day/tree/master/24)
+
+[Day 25 - Intermediate - Working with CSV Data and the Pandas Library](https://github.com/neubrom/100day/tree/master/25)
+
+[Day 26 - Intermediate - List Comprehension and the NATO Alphabet](https://github.com/neubrom/100day/tree/master/26)
+
+[Day 27 - Intermediate - Tkinter, *args, **kwargs and Creating GUI Programs](https://github.com/neubrom/100day/tree/master/27)
+
+[Day 28 - Intermediate - Tkinter, Dynamic Typing and the Pomodoro GUI Application](https://github.com/neubrom/100day/tree/master/28)
+
+[Day 29 - Intermediate - Building a Password Manager GUI App with Tkinter](https://github.com/neubrom/100day/tree/master/29)
+
+
+
