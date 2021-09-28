@@ -38,6 +38,7 @@ Starting from : August 22, 2021
 [Day 16 - Intermediate - Object Oriented Programming (OOP)](https://github.com/neubrom/100day/tree/master/16)
 
 [Day 17 - Intermediate - The Quiz Project & the Benefits of OOP](https://github.com/neubrom/100day/tree/master/17)
+![img.png](img.png)
 
 [Day 18 - Intermediate - Turtle & the Graphical User Interface (GUI)](https://github.com/neubrom/100day/tree/master/18)
 
