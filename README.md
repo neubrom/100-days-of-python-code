@@ -64,5 +64,10 @@ Starting from : August 22, 2021
 
 [Day 29 - Intermediate - Building a Password Manager GUI App with Tkinter](https://github.com/neubrom/100day/tree/master/29)
 
+[Day 30 - Intermediate - Errors, Exceptions and JSON Data: Improving the Password](https://github.com/neubrom/100day/tree/master/30)
+
+[Day 31 - Intermediate - Flash Card App Capstone Project](https://github.com/neubrom/100day/tree/master/31)
+
+
 
 
