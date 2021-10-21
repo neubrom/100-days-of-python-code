@@ -8,6 +8,15 @@
 # 2. Check if today matches a birthday in the birthdays.csv
 # HINT 1: Create a tuple from today's month and day using datetime. e.g.
 # today = (today_month, today_day)
+import datetime as dt
+now = dt.datetime.now()
+today_month = now.month
+today_day = now.weekday()
+today = (today_month, today_day)
+
+with open("birthdays.csv") as birthday_file:
+    all_birthday = birthday_file.readlines()
+    quote = random.choice(all_quotes)
 
 # HINT 2: Use pandas to read the birthdays.csv
 
