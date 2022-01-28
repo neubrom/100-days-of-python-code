@@ -33,7 +33,7 @@ class QuizInterface:
         self.canvas.grid(row=1, column=0, columnspan=2, pady=50)
 
         true_image = PhotoImage(file="images/true.png")
-        self.true_button = Button(image=true_image, highlightthickness=0)
+        self.true_button = Button(image=true_image, highlightthickness=0, command=self.check_button_true)
         self.true_button.grid(row=2, column=0)
 
         false_image = PhotoImage(file="images/false.png")
@@ -48,3 +48,5 @@ class QuizInterface:
         q_text = self.quiz.next_question()
         self.canvas.itemconfig(self.question_text, text=q_text)
 
+    def check_button_true(self):
+        if self.QuizBrain.check_answer()
