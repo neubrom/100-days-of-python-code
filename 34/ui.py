@@ -55,7 +55,6 @@ class QuizInterface:
             self.true_button.config(state="disabled")
             self.false_button.config(state="disabled")
 
-
     def check_button_true(self):
         self.give_feedback(self.quiz.check_answer("True"))
 
